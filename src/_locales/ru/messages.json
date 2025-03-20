@@ -1,0 +1,14 @@
+{
+  "appName": {
+    "message": "FISABytes"
+  },
+  "appDescription": {
+    "message": "Простой инструмент для экспорта/импорта кукисов. Делитесь онлайн-аккаунтами, не раскрывая свой пароль."
+  },
+  "dialogTitle": {
+    "message": "FISABytes"
+  },
+  "confirmRemoveCookies": {
+    "message": "Вы хотите удалить все файлы cookie с этого сайта?"
+  }
+}

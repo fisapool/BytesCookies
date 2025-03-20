@@ -1,0 +1,14 @@
+{
+  "appName": {
+    "message": "FISABytes"
+  },
+  "appDescription": {
+    "message": "Công cụ đơn giản để xuất/nhập cookies. Chia sẻ tài khoản trực tuyến mà không tiết lộ mật khẩu của bạn."
+  },
+  "dialogTitle": {
+    "message": "FISABytes"
+  },
+  "confirmRemoveCookies": {
+    "message": "Bạn có muốn xóa tất cả cookies của trang web này không?"
+  }
+}
