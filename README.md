@@ -1,7 +1,7 @@
-# BytesCookies - Simple Cookie Manager
+# FISABytes - Simple Cookie Manager
 
 ## Overview
-BytesCookies is a lightweight Chrome extension that makes cookie management easy. Export and import browser cookies with a clean, simple interface. The extension now includes smart website logo detection and improved error handling for a better user experience.
+FISABytes is a lightweight Chrome extension that makes cookie management easy. Export and import browser cookies with a clean, simple interface. The extension now includes smart website logo detection and improved error handling for a better user experience.
 
 ## Features
 - 🔄 **Easy Cookie Management**
@@ -38,7 +38,7 @@ BytesCookies is a lightweight Chrome extension that makes cookie management easy
 
 ## Project Structure
 ```
-BytesCookies/
+FISABytes/
 ├── src/
 │   ├── assets/
 │   │   ├── site-logo.js        # Logo detection and handling
@@ -59,7 +59,7 @@ BytesCookies/
 ```
 
 ## Usage
-1. Click the BytesCookies icon in your browser
+1. Click the FISABytes icon in your browser
 2. Choose to Export or Import cookies
 3. For importing: select your previously exported .json file
 4. For exporting: the file will save to your downloads folder
