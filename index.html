@@ -15,21 +15,19 @@
                 extend: {
                     colors: {
                         primary: {
-                            /* Replace with your actual colors from src/popup.html */
-                            50: '#f5f8ff',
-                            100: '#edf2ff',
-                            200: '#dee8ff',
-                            300: '#c1d1ff',
-                            400: '#99b3ff',
-                            500: '#668cff',  /* Main button color */
-                            600: '#4d73ff',  /* Button hover */
-                            700: '#3355ff',
-                            800: '#0022ff',
-                            900: '#0017cc',
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            200: '#fde68a',
+                            300: '#fcd34d',
+                            400: '#fbbf24',
+                            500: '#f59e0b',  /* Main gold color for buttons */
+                            600: '#d97706',  /* Button hover color */
+                            700: '#b45309',
+                            800: '#92400e',
+                            900: '#78350f',
                         },
                         secondary: {
-                            /* Secondary colors from your app */
-                            100: '#f8f9fa',  /* Tips section background */
+                            100: '#f8f9fa',  /* Light gray for tips section */
                             500: '#4a5568',  /* Text color */
                         },
                         background: '#ffffff',
@@ -59,7 +57,7 @@
         }
         
         #app .header {
-            background-color: #668cff;
+            background-color: #f59e0b !important;  /* Yellow/gold color */
             color: white;
             padding: 16px;
             display: flex;
@@ -85,7 +83,7 @@
         
         #app .action-button {
             width: 100%;
-            background-color: #668cff;
+            background-color: #f59e0b !important;  /* Yellow/gold color */
             color: white;
             border: none;
             border-radius: 6px;
@@ -97,11 +95,11 @@
         }
         
         #app .action-button:hover {
-            background-color: #4d73ff;
+            background-color: #d97706 !important;  /* Darker gold on hover */
         }
         
         #app .tips-section {
-            background-color: #f8f9fa;
+            background-color: #f8f9fa !important;
             padding: 16px;
             border-radius: 10px;
             margin-top: 20px;
@@ -239,7 +237,7 @@
                         <!-- App Container -->
                         <div id="app">
                             <div class="container">
-                                <div class="header">
+                                <div class="header" style="background-color: #f59e0b !important;">
                                     <div class="title-container">
                                         <h1>FISABytes</h1>
                                         <p class="slogan">Version 2.0</p>
