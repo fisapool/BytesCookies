@@ -54,6 +54,18 @@ if (fs.existsSync(assetsSourceDir)) {
   console.log('Assets copied successfully!');
 }
 
+// Add this to ensure all CSS files are copied
+const cssSourceDir = path.join(__dirname, '../src/assets');
+const cssTargetDir = path.join(__dirname, '../landing-page/assets');
+
+if (fs.existsSync(cssSourceDir)) {
+  if (!fs.existsSync(cssTargetDir)) {
+    fs.mkdirSync(cssTargetDir, { recursive: true });
+  }
+  copyFolderRecursiveSync(cssSourceDir, cssTargetDir);
+  console.log('CSS assets copied successfully!');
+}
+
 console.log('Landing page assets copied successfully!');
 
 // Helper function to copy directory recursively
