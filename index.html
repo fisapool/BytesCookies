@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cookie Manager | Browser Extension</title>
+    <title>FISABytes | Browser Cookie Manager</title>
     <!-- Add Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -31,7 +31,7 @@
     <style>
         .hero-pattern {
             background-color: #f8fafc;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23bae6fd' fill-opacity='0.4'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23bae6fd' fill-opacity='0.4'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
     </style>
 </head>
@@ -43,7 +43,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary-600" viewBox="0 0 20 20" fill="currentColor">
                         <path d="M2.5 4A1.5 1.5 0 001 5.5V6h18v-.5A1.5 1.5 0 0017.5 4h-15zM19 8.5H1v6A1.5 1.5 0 002.5 16h15a1.5 1.5 0 001.5-1.5v-6zM3 10h14v1H3v-1zm0 3h4v1H3v-1z" />
                     </svg>
-                    <h1 class="text-2xl font-bold ml-2 text-gray-900">Cookie Manager</h1>
+                    <h1 class="text-2xl font-bold ml-2 text-gray-900">FISABytes</h1>
                 </div>
                 <nav>
                     <ul class="flex space-x-8">
@@ -61,7 +61,7 @@
         <section class="hero-pattern py-24 sm:py-32">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h2 class="text-4xl sm:text-5xl font-bold mb-6 text-gray-900">Manage Browser Cookies with Ease</h2>
-                <p class="text-lg sm:text-xl mb-10 max-w-2xl mx-auto text-gray-600">A secure and efficient way to export, import, and manage browser cookies with a modern interface.</p>
+                <p class="text-lg sm:text-xl mb-10 max-w-2xl mx-auto text-gray-600">FISABytes offers a secure and efficient way to export, import, and manage browser cookies with a modern interface.</p>
                 <div class="inline-block relative group">
                     <div class="absolute -inset-0.5 bg-gradient-to-r from-primary-600 to-blue-500 rounded-lg blur opacity-50 group-hover:opacity-100 transition duration-300"></div>
                     <a href="#download" class="relative bg-primary-600 text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-primary-700 transition duration-300 inline-block">
@@ -78,7 +78,7 @@
 
         <section id="features" class="py-20 bg-white">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-bold mb-16 text-center">Key Features</h2>
+                <h2 class="text-3xl font-bold mb-16 text-center">Key Features of FISABytes</h2>
                 <div class="grid md:grid-cols-3 gap-10">
                     <div class="bg-gray-50 p-8 rounded-xl shadow-sm hover:shadow-md transition duration-300">
                         <div class="bg-primary-100 rounded-full w-12 h-12 flex items-center justify-center mb-5">
@@ -188,12 +188,12 @@
 
         <section id="download" class="py-20 text-center bg-gradient-to-b from-gray-50 to-white">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-bold mb-8">Download Cookie Manager</h2>
-                <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">Get started with Cookie Manager today and take control of your browser cookies.</p>
+                <h2 class="text-3xl font-bold mb-8">Download FISABytes</h2>
+                <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">Get started with FISABytes today and take control of your browser cookies.</p>
                 
                 <div class="inline-block mb-8 relative group">
                     <div class="absolute -inset-0.5 bg-gradient-to-r from-primary-600 to-blue-500 rounded-lg blur opacity-50 group-hover:opacity-100 transition duration-300"></div>
-                    <a href="downloads/cookie-manager.zip" class="relative flex items-center justify-center bg-primary-600 text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-primary-700 transition duration-300 inline-block">
+                    <a href="downloads/fisabytes.zip" class="relative flex items-center justify-center bg-primary-600 text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-primary-700 transition duration-300 inline-block">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
                         </svg>
@@ -204,6 +204,8 @@
                 <div class="bg-gray-100 rounded-lg p-6 max-w-lg mx-auto">
                     <h3 class="text-lg font-medium mb-3">Extension Information</h3>
                     <div class="grid grid-cols-2 gap-4 text-left">
+                        <div class="text-gray-600">Name:</div>
+                        <div class="font-medium">FISABytes</div>
                         <div class="text-gray-600">Version:</div>
                         <div class="font-medium">1.0.0</div>
                         <div class="text-gray-600">Released:</div>
@@ -220,7 +222,7 @@
         <!-- New Installation Guide Section -->
         <section id="installation" class="py-20 bg-white">
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-bold mb-12 text-center">Installation Guide</h2>
+                <h2 class="text-3xl font-bold mb-12 text-center">Installing FISABytes</h2>
                 
                 <div class="bg-gray-50 rounded-lg p-8 mb-10 shadow-sm">
                     <h3 class="text-2xl font-semibold mb-6 flex items-center">
@@ -241,7 +243,7 @@
                             </div>
                             <div>
                                 <h4 class="text-lg font-medium mb-2">Download the Extension</h4>
-                                <p class="text-gray-600">Click the download button above to get the Cookie Manager zip file.</p>
+                                <p class="text-gray-600">Click the download button above to get the FISABytes zip file.</p>
                             </div>
                         </div>
                         
@@ -281,7 +283,7 @@
                             </div>
                             <div>
                                 <h4 class="text-lg font-medium mb-2">Load Unpacked Extension</h4>
-                                <p class="text-gray-600">Click the "Load unpacked" button, then select the folder where you extracted Cookie Manager.</p>
+                                <p class="text-gray-600">Click the "Load unpacked" button, then select the folder where you extracted FISABytes.</p>
                             </div>
                         </div>
                         
@@ -291,7 +293,7 @@
                             </div>
                             <div>
                                 <h4 class="text-lg font-medium mb-2">Pin the Extension (Optional)</h4>
-                                <p class="text-gray-600">Click the puzzle piece icon in Chrome's toolbar, then pin Cookie Manager for easy access.</p>
+                                <p class="text-gray-600">Click the puzzle piece icon in Chrome's toolbar, then pin FISABytes for easy access.</p>
                             </div>
                         </div>
                     </div>
@@ -314,7 +316,7 @@
                         <div>
                             <h4 class="text-lg font-medium mb-3">Importing Cookies</h4>
                             <ol class="list-decimal ml-6 space-y-3 text-gray-600">
-                                <li>Click on the Cookie Manager icon in your browser toolbar</li>
+                                <li>Click on the FISABytes icon in your browser toolbar</li>
                                 <li>Select the "Import" tab in the extension popup</li>
                                 <li>Click "Choose File" and select your cookie file (supported formats: JSON, Netscape format, etc.)</li>
                                 <li>Review the cookies to be imported</li>
@@ -325,7 +327,7 @@
                         <div>
                             <h4 class="text-lg font-medium mb-3">Exporting Cookies</h4>
                             <ol class="list-decimal ml-6 space-y-3 text-gray-600">
-                                <li>Open Cookie Manager from your browser toolbar</li>
+                                <li>Open FISABytes from your browser toolbar</li>
                                 <li>Navigate to the "Export" tab</li>
                                 <li>Select which cookies you want to export (all sites or current site only)</li>
                                 <li>Choose your preferred format (JSON, Netscape, etc.)</li>
@@ -336,7 +338,7 @@
                         <div>
                             <h4 class="text-lg font-medium mb-3">Managing Existing Cookies</h4>
                             <ol class="list-decimal ml-6 space-y-3 text-gray-600">
-                                <li>Open Cookie Manager from your browser toolbar</li>
+                                <li>Open FISABytes from your browser toolbar</li>
                                 <li>The "Manage" tab shows all cookies for the current site</li>
                                 <li>Use the search box to filter cookies by name or value</li>
                                 <li>Click on a cookie to edit its properties</li>
@@ -354,8 +356,8 @@
                 <h2 class="text-3xl font-bold mb-12 text-center">Frequently Asked Questions</h2>
                 <div class="space-y-8">
                     <div class="bg-white p-6 rounded-lg shadow-sm">
-                        <h3 class="text-xl font-semibold mb-3">Is Cookie Manager safe to use?</h3>
-                        <p class="text-gray-600">Yes, Cookie Manager operates locally and never sends your cookie data to external servers. All operations happen directly in your browser, ensuring your data remains private and secure.</p>
+                        <h3 class="text-xl font-semibold mb-3">Is FISABytes safe to use?</h3>
+                        <p class="text-gray-600">Yes, FISABytes operates locally and never sends your cookie data to external servers. All operations happen directly in your browser, ensuring your data remains private and secure.</p>
                     </div>
                     <div class="bg-white p-6 rounded-lg shadow-sm">
                         <h3 class="text-xl font-semibold mb-3">How do I import cookies?</h3>
@@ -363,11 +365,11 @@
                     </div>
                     <div class="bg-white p-6 rounded-lg shadow-sm">
                         <h3 class="text-xl font-semibold mb-3">Which browsers are supported?</h3>
-                        <p class="text-gray-600">Cookie Manager works with Chrome, Firefox, Edge, and other Chromium-based browsers such as Brave and Opera. The extension provides a consistent experience across all supported browsers.</p>
+                        <p class="text-gray-600">FISABytes works with Chrome, Firefox, Edge, and other Chromium-based browsers such as Brave and Opera. The extension provides a consistent experience across all supported browsers.</p>
                     </div>
                     <div class="bg-white p-6 rounded-lg shadow-sm">
-                        <h3 class="text-xl font-semibold mb-3">Can I use Cookie Manager for all websites?</h3>
-                        <p class="text-gray-600">Yes, Cookie Manager works with all websites. However, some websites may implement security measures that prevent cookie manipulation. The extension will notify you if it encounters any issues.</p>
+                        <h3 class="text-xl font-semibold mb-3">Can I use FISABytes for all websites?</h3>
+                        <p class="text-gray-600">Yes, FISABytes works with all websites. However, some websites may implement security measures that prevent cookie manipulation. The extension will notify you if it encounters any issues.</p>
                     </div>
                 </div>
             </div>
@@ -382,7 +384,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary-400" viewBox="0 0 20 20" fill="currentColor">
                             <path d="M2.5 4A1.5 1.5 0 001 5.5V6h18v-.5A1.5 1.5 0 0017.5 4h-15zM19 8.5H1v6A1.5 1.5 0 002.5 16h15a1.5 1.5 0 001.5-1.5v-6zM3 10h14v1H3v-1zm0 3h4v1H3v-1z" />
                         </svg>
-                        <h2 class="text-xl font-bold ml-2">Cookie Manager</h2>
+                        <h2 class="text-xl font-bold ml-2">FISABytes</h2>
                     </div>
                     <p class="text-gray-400">A modern solution for browser cookie management with security and ease-of-use at its core.</p>
                 </div>
@@ -407,7 +409,7 @@
                 </div>
             </div>
             <div class="mt-12 pt-8 border-t border-gray-700 text-gray-400 text-center md:text-left">
-                <p>© 2023 Cookie Manager. All rights reserved.</p>
+                <p>© 2023 FISABytes. All rights reserved.</p>
             </div>
         </div>
     </footer>
