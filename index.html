@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Manager | Browser Extension</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Add Tailwind CDN if you want to reuse your styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <header class="max-w-6xl mx-auto py-8 px-4">
+        <div class="flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Cookie Manager</h1>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="#features" class="hover:text-blue-600">Features</a></li>
+                    <li><a href="#download" class="hover:text-blue-600">Download</a></li>
+                    <li><a href="#faq" class="hover:text-blue-600">FAQ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4">
+        <section class="py-20 text-center">
+            <h2 class="text-5xl font-bold mb-6">Manage Browser Cookies with Ease</h2>
+            <p class="text-xl mb-10 max-w-2xl mx-auto">A secure and efficient way to export, import, and manage browser cookies with a modern React interface.</p>
+            <div>
+                <a href="#download" class="bg-blue-600 text-white px-6 py-3 rounded-lg text-lg font-medium hover:bg-blue-700">Download Now</a>
+            </div>
+        </section>
+
+        <section id="features" class="py-16">
+            <h2 class="text-3xl font-bold mb-12 text-center">Key Features</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">🔄 Cookie Management</h3>
+                    <ul class="space-y-2">
+                        <li>Export and import cookies</li>
+                        <li>Secure cookie handling</li>
+                        <li>Validation and error checking</li>
+                        <li>Support for various cookie formats</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">🎨 Modern UI/UX</h3>
+                    <ul class="space-y-2">
+                        <li>Clean, responsive interface</li>
+                        <li>Real-time feedback</li>
+                        <li>Error notifications</li>
+                        <li>Loading states</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">🔒 Security</h3>
+                    <ul class="space-y-2">
+                        <li>Local operations</li>
+                        <li>Secure cookie validation</li>
+                        <li>Error boundaries</li>
+                        <li>Type-safe operations</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="download" class="py-16 text-center">
+            <h2 class="text-3xl font-bold mb-8">Download Cookie Manager</h2>
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <a href="https://chrome.google.com/webstore/detail/YOUR-EXTENSION-ID" class="bg-blue-600 text-white px-6 py-3 rounded-lg text-lg font-medium hover:bg-blue-700">
+                    Chrome Web Store
+                </a>
+                <a href="downloads/cookie-manager.zip" class="bg-gray-200 text-gray-800 px-6 py-3 rounded-lg text-lg font-medium hover:bg-gray-300">
+                    Direct Download (.zip)
+                </a>
+            </div>
+            <p class="mt-6 text-gray-600">Version 1.0.0 | Released: October 2023</p>
+        </section>
+
+        <section id="faq" class="py-16">
+            <h2 class="text-3xl font-bold mb-8 text-center">Frequently Asked Questions</h2>
+            <div class="space-y-6 max-w-3xl mx-auto">
+                <div>
+                    <h3 class="text-xl font-semibold mb-2">Is Cookie Manager safe to use?</h3>
+                    <p>Yes, Cookie Manager operates locally and never sends your cookie data to external servers. All operations happen directly in your browser.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-2">How do I import cookies?</h3>
+                    <p>Simply click the "Import" button, select your cookie file, and follow the on-screen instructions.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-2">Which browsers are supported?</h3>
+                    <p>Cookie Manager works with Chrome, Firefox, Edge, and other Chromium-based browsers.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-6 md:mb-0">
+                    <h2 class="text-xl font-bold mb-4">Cookie Manager</h2>
+                    <p class="text-gray-400">A modern solution for browser cookie management.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Links</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Home</a></li>
+                        <li><a href="#features" class="hover:text-white">Features</a></li>
+                        <li><a href="#download" class="hover:text-white">Download</a></li>
+                        <li><a href="https://github.com/yourusername/cookie-manager" class="hover:text-white">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700 text-gray-400">
+                <p>© 2023 Cookie Manager. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 
