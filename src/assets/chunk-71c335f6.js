@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Helper function to validate and format cookie data
   function validateAndFormatCookies(data) {
-    // If string, try to parse it
     if (typeof data === 'string') {
       try {
         data = JSON.parse(data);
@@ -13,24 +12,21 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Convert single object to array
     if (data && typeof data === 'object' && !Array.isArray(data)) {
       data = [data];
     }
 
-    // Ensure we have an array
     if (!Array.isArray(data)) {
       throw new Error('Cookie data must be an array or single object');
     }
 
-    // Validate each cookie
     return data.filter(cookie => {
       if (!cookie || typeof cookie !== 'object') return false;
       if (!cookie.name || !cookie.domain) {
         console.warn('Skipping invalid cookie:', cookie);
         return false;
       }
-      if (!cookie.path) cookie.path = '/';
+      cookie.path = cookie.path || '/'; // Default path if not provided
       return true;
     });
   }
@@ -40,12 +36,17 @@ document.addEventListener('DOMContentLoaded', () => {
     button.className = `action-button ${status}`;
     buttonText.textContent = message;
     buttonText.classList.add('status-message');
-    
+
     setTimeout(() => {
-      button.className = 'action-button';
-      buttonText.textContent = button === exportBtn ? 'Export Cookies' : 'Import Cookies';
-      buttonText.classList.remove('status-message');
+      resetButton(button);
     }, status === 'error' ? 3000 : 2000);
+  }
+
+  function resetButton(button) {
+    const buttonText = button.querySelector('.button-text');
+    button.className = 'action-button';
+    buttonText.textContent = button === exportBtn ? 'Export Cookies' : 'Import Cookies';
+    buttonText.classList.remove('status-message');
   }
 
   exportBtn.addEventListener('click', async () => {
@@ -66,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
       updateButtonStatus(exportBtn, 'success', 'Cookies Exported!');
     } catch (error) {
       console.error('Export error:', error);
-      updateButtonStatus(exportBtn, 'error', 'Export Failed');
+      updateButtonStatus(exportBtn, 'error', 'Export Failed: ' + error.message);
     }
   });
 
@@ -82,17 +83,8 @@ document.addEventListener('DOMContentLoaded', () => {
           throw new Error('No file selected');
         }
 
-        console.log('Reading file:', file.name);
         const text = await file.text();
-        let data;
-        
-        try {
-          data = JSON.parse(text);
-          console.log('Parsed data:', data);
-        } catch (error) {
-          console.error('Parse error:', error);
-          throw new Error('Invalid JSON format');
-        }
+        const data = validateAndFormatCookies(text); // Validate and format the cookies
 
         const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
         if (!tab || !tab.url) {
@@ -125,4 +117,4 @@ document.addEventListener('DOMContentLoaded', () => {
     
     input.click();
   });
-}); 
+});

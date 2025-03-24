@@ -1,3 +1,64 @@
+async function findSiteLogo(tab) {
+  try {
+    // Check if the URL is a chrome:// URL
+    if (tab.url.startsWith('chrome://')) {
+      console.warn('Cannot access chrome:// URLs');
+      return null; // Return null or a fallback logo
+    }
+
+    // Execute script in the active tab to find the logo using Manifest V3 API
+    const [{ result }] = await chrome.scripting.executeScript({
+      target: { tabId: tab.id },
+      func: () => {
+        // Method 1: Check for favicon link
+        const favicon = document.querySelector('link[rel="icon"], link[rel="shortcut icon"], link[rel="apple-touch-icon"]');
+        if (favicon) {
+          return favicon.href;
+        }
+        
+        // Method 2: Check meta tags (Open Graph and Twitter Card)
+        const ogImage = document.querySelector('meta[property="og:image"], meta[name="twitter:image"]');
+        if (ogImage) {
+          return ogImage.content;
+        }
+        
+        // Method 3: Check application-name or apple-mobile-web-app-title
+        const appleMeta = document.querySelector('meta[name="apple-mobile-web-app-title"]');
+        if (appleMeta) {
+          return null; // Return null here, we'll use the title to generate a text-based logo
+        }
+        
+        // Method 4: Look for common logo elements
+        const commonLogoSelectors = [
+          '.logo img', 
+          '.site-logo img', 
+          'header img[alt*="logo"]',
+          '#logo img',
+          'img.logo',
+          'a.navbar-brand img'
+        ];
+        
+        for (const selector of commonLogoSelectors) {
+          const logoEl = document.querySelector(selector);
+          if (logoEl && logoEl.src) {
+            return logoEl.src;
+          }
+        }
+        
+        // No logo found
+        return null;
+      }
+    });
+    
+    return result || null;
+    
+  } catch (error) {
+    console.error('Error executing script to find logo:', error);
+    // Fallback to a default favicon if an error occurs
+    return `${new URL(tab.url).origin}/favicon.ico`;
+  }
+}
+
 // Site Logo Finder
 document.addEventListener('DOMContentLoaded', async () => {
   // Create UI elements for the logo
@@ -56,6 +117,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 // Function to find a website's logo
 async function findSiteLogo(tab) {
   try {
+    // Check if the URL is a chrome:// URL
+    if (tab.url.startsWith('chrome://')) {
+      console.warn('Cannot access chrome:// URLs');
+      return null; // Return null or a fallback logo
+    }
+
     // Execute script in the active tab to find the logo using Manifest V3 API
     const [{ result }] = await chrome.scripting.executeScript({
       target: { tabId: tab.id },
@@ -75,8 +142,7 @@ async function findSiteLogo(tab) {
         // Method 3: Check application-name or apple-mobile-web-app-title
         const appleMeta = document.querySelector('meta[name="apple-mobile-web-app-title"]');
         if (appleMeta) {
-          // Return null here, we'll use the title to generate a text-based logo
-          return null;
+          return null; // Return null here, we'll use the title to generate a text-based logo
         }
         
         // Method 4: Look for common logo elements
@@ -105,7 +171,7 @@ async function findSiteLogo(tab) {
     
   } catch (error) {
     console.error('Error executing script to find logo:', error);
-    // Try fallback method using default favicon path
+    // Fallback to a default favicon if an error occurs
     return `${new URL(tab.url).origin}/favicon.ico`;
   }
 }
@@ -143,7 +209,7 @@ function setFallbackLogo(logoImage, tab) {
       logoImage.src = canvas.toDataURL('image/png');
     } catch (error) {
       console.error('Error creating fallback logo:', error);
-      logoImage.src = 'img/logo-placeholder.png';
+      logoImage.src = 'img/logo-placeholder.png'; // Use a placeholder if there's an error
     }
   } else {
     // If no tab, use extension's default logo
@@ -159,4 +225,4 @@ function getHashCode(str) {
     hash |= 0; // Convert to 32bit integer
   }
   return Math.abs(hash);
-} 
+}
