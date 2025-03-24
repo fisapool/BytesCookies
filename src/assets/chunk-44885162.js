@@ -14,14 +14,16 @@ const cookieUtils = {
     let failedCookies = [];
 
     // Handle both wrapped and unwrapped cookie formats
-    const cookies = Array.isArray(data) ? data : 
-                   (data.cookies ? data.cookies : [data]);
+    const cookies = Array.isArray(data) ? data : (data.cookies ? data.cookies : [data]);
 
     for (const cookie of cookies) {
       try {
-        // Skip if missing required fields
-        if (!cookie.name || !cookie.domain) {
-          console.warn('Skipping invalid cookie:', cookie);
+        // Validate required fields
+        if (!this.isValidCookie(cookie)) {
+          console.warn('Skipping invalid cookie:', {
+            name: cookie.name || 'unknown',
+            domain: cookie.domain || 'unknown'
+          });
           failed++;
           failedCookies.push({ name: cookie.name || 'unknown', reason: 'Missing required fields' });
           continue;
@@ -29,40 +31,14 @@ const cookieUtils = {
 
         // Silently skip __Host- prefixed cookies as they have special requirements
         if (cookie.name.startsWith('__Host-')) {
+          console.warn('Skipping __Host- cookie:', cookie.name);
           continue;
         }
 
-        const cookieToSet = { ...cookie };
-        
-        // Clean up cookie data
-        delete cookieToSet.hostOnly;
-        delete cookieToSet.session;
-        delete cookieToSet.storeId;
-
-        // Ensure valid path
-        cookieToSet.path = cookieToSet.path || '/';
-
-        // Handle secure property
-        cookieToSet.secure = Boolean(cookieToSet.secure);
-
-        // Handle expiration
-        if (cookieToSet.expirationDate) {
-          const expiryDate = new Date(
-            typeof cookieToSet.expirationDate === 'number' 
-              ? cookieToSet.expirationDate * 1000 
-              : cookieToSet.expirationDate
-          );
-          
-          if (expiryDate > new Date()) {
-            cookieToSet.expirationDate = Math.floor(expiryDate.getTime() / 1000);
-          } else {
-            delete cookieToSet.expirationDate;
-          }
-        }
+        const cookieToSet = this.prepareCookie(cookie);
 
         // Construct proper URL for the cookie
-        const protocol = cookieToSet.secure ? 'https://' : 'http://';
-        const cookieUrl = `${protocol}${cookieToSet.domain.startsWith('.') ? cookieToSet.domain.slice(1) : cookieToSet.domain}${cookieToSet.path}`;
+        const cookieUrl = this.constructCookieUrl(cookieToSet);
 
         await chrome.cookies.set({
           url: cookieUrl,
@@ -75,7 +51,7 @@ const cookieUtils = {
         console.error('Failed to set cookie:', cookie.name, error);
         failed++;
         failedCookies.push({ 
-          name: cookie.name, 
+          name: cookie.name || 'unknown', 
           reason: error.message || 'Unknown error'
         });
       }
@@ -86,7 +62,49 @@ const cookieUtils = {
       failed,
       failedCookies 
     };
+  },
+
+  isValidCookie(cookie) {
+    return cookie.name && cookie.domain;
+  },
+
+  prepareCookie(cookie) {
+    const cookieToSet = { ...cookie };
+
+    // Clean up cookie data
+    delete cookieToSet.hostOnly;
+    delete cookieToSet.session;
+    delete cookieToSet.storeId;
+
+    // Ensure valid path
+    cookieToSet.path = cookieToSet.path || '/';
+
+    // Handle secure property
+    cookieToSet.secure = Boolean(cookieToSet.secure);
+
+    // Handle expiration
+    if (cookieToSet.expirationDate) {
+      const expiryDate = new Date(
+        typeof cookieToSet.expirationDate === 'number' 
+          ? cookieToSet.expirationDate * 1000 
+          : cookieToSet.expirationDate
+      );
+
+      if (expiryDate > new Date()) {
+        cookieToSet.expirationDate = Math.floor(expiryDate.getTime() / 1000);
+      } else {
+        delete cookieToSet.expirationDate;
+      }
+    }
+
+    return cookieToSet;
+  },
+
+  constructCookieUrl(cookie) {
+    const protocol = cookie.secure ? 'https://' : 'http://';
+    const domain = cookie.domain.startsWith('.') ? cookie.domain.slice(1) : cookie.domain;
+    return `${protocol}${domain}${cookie.path}`;
   }
 };
 
-window.cookieUtils = cookieUtils; 
+window.cookieUtils = cookieUtils;
