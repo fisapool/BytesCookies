@@ -1,23 +1,21 @@
 export interface Cookie {
-  domain: string;
   name: string;
   value: string;
+  domain: string;
   path: string;
-  secure?: boolean;
-  httpOnly?: boolean;
-  sameSite?: string;
+  secure: boolean;
+  httpOnly: boolean;
+  sameSite: 'no_restriction' | 'lax' | 'strict';
   expirationDate?: number;
 }
 
 export interface EncryptedData {
   data: string;
   iv: string;
-  hash: string;
-  timestamp: number;
-  version: string;
+  salt: string;
 }
 
-export interface ValidationError {
+export interface ValidationErrorDetails {
   field: string;
   code: string;
   message: string;
@@ -34,9 +32,7 @@ export interface ValidationWarning {
 
 export interface ValidationResult {
   isValid: boolean;
-  errors: ValidationError[];
-  warnings: ValidationWarning[];
-  metadata?: any;
+  errors?: string[];
 }
 
 export interface RecoveryStrategy {
@@ -82,6 +78,38 @@ export interface ImportResult {
     imported: number;
     timestamp: number;
   };
+}
+
+export type AuthEventType = 
+  | 'LOGIN_SUCCESS'
+  | 'LOGIN_FAILURE'
+  | 'LOGOUT_SUCCESS'
+  | 'SESSION_EXPIRED'
+  | 'TOKEN_REFRESHED'
+  | 'TOKEN_REFRESH_FAILED';
+
+export interface SessionData {
+  accessToken: string;
+  refreshToken: string;
+  expiresAt: number;
+  deviceId?: string;
+  lastActivity?: number;
+  user: {
+    id: string;
+    email: string;
+    name: string;
+  };
+  device?: {
+    deviceId: string;
+    isActive: boolean;
+  };
+}
+
+export interface ErrorDetails {
+  code: string;
+  message: string;
+  timestamp: number;
+  context?: Record<string, any>;
 }
 
 export class SecurityError extends Error {
