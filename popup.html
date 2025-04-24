@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="img/logo-16.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cookie Manager</title>
+    <link rel="stylesheet" href="assets/popup.html.3bd9b4f3.css">
+    <style>
+      body {
+        width: 400px;
+        padding: 16px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .input-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      input, button {
+        padding: 8px 12px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+      }
+
+      button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+
+      button:disabled {
+        background-color: #cccccc;
+        cursor: not-allowed;
+      }
+
+      .loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+
+      .loading-spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #4CAF50;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      .error-message {
+        padding: 12px;
+        margin: 8px 0;
+        border-radius: 4px;
+      }
+
+      .error-message.critical {
+        background-color: #fee2e2;
+        border: 1px solid #ef4444;
+        color: #991b1b;
+      }
+
+      .error-message.medium {
+        background-color: #fef3c7;
+        border: 1px solid #f59e0b;
+        color: #92400e;
+      }
+
+      .error-message.low {
+        background-color: #e0f2fe;
+        border: 1px solid #3b82f6;
+        color: #1e40af;
+      }
+
+      .error-section {
+        display: none;
+        margin-top: 16px;
+      }
+
+      .error-list {
+        max-height: 200px;
+        overflow-y: auto;
+      }
+
+      .error-dismiss {
+        margin-top: 8px;
+        background-color: #ef4444;
+      }
+
+      .error-dismiss:hover {
+        background-color: #dc2626;
+      }
+
+      .status-message {
+        padding: 8px;
+        border-radius: 4px;
+        background-color: #f3f4f6;
+        color: #374151;
+        font-size: 14px;
+      }
+
+      .success {
+        background-color: #dcfce7;
+        color: #166534;
+      }
+
+      .error {
+        background-color: #fee2e2;
+        color: #991b1b;
+      }
+
+      .tips-section {
+        background-color: #f8f9fa;
+        padding: 16px;
+        border-radius: 10px;
+        margin-top: 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      }
+
+      .tips-section h3 {
+        color: #2d3748;
+        margin: 0 0 12px 0;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .tips-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .tips-list li {
+        color: #4a5568;
+        padding: 6px 0;
+        font-size: 13px;
+        line-height: 1.5;
+        display: flex;
+        align-items: flex-start;
+      }
+
+      .tips-list li:before {
+        content: counter(step);
+        counter-increment: step;
+        background: #e2e8f0;
+        color: #4a5568;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 8px;
+        font-size: 12px;
+        flex-shrink: 0;
+      }
+
+      .button-group {
+        display: flex;
+        gap: 8px;
+      }
+
+      .action-button {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 120px;
+      }
+
+      .button-text {
+        display: inline-block;
+      }
+
+      .status-message {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <!-- Loading overlay -->
+      <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+        <div class="loading-spinner"></div>
+      </div>
+
+      <div class="container">
+        <div class="header">
+          <div class="title-container">
+            <h1>FISABytes</h1>
+            <p class="slogan">Version 2.0</p>
+          </div>
+        </div>
+        <div class="content">
+          <div class="input-group">
+            <label for="domain">Domain:</label>
+            <input type="text" id="domain" placeholder="Enter domain (e.g., example.com)">
+          </div>
+
+          <div class="button-group">
+            <button id="exportBtn" class="action-button">
+              <span class="button-text">Export Cookies</span>
+            </button>
+            <button id="importBtn" class="action-button">
+              <span class="button-text">Import Cookies</span>
+            </button>
+          </div>
+
+          <!-- Status message -->
+          <div id="statusMessage" class="status-message" style="display: none;"></div>
+
+          <!-- Error display -->
+          <div id="errorDisplay" class="error-section">
+            <div id="errorList" class="error-list"></div>
+            <button id="dismissError" class="error-dismiss">Dismiss</button>
+          </div>
+
+          <!-- Quick Start Tips -->
+          <div class="tips-section">
+            <h3>Quick Start:</h3>
+            <ul class="tips-list" style="counter-reset: step">
+              <li>Click "Import Cookies" and select your .json cookie file</li>
+              <li>Wait for import confirmation</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer">
+          <a href="https://shopee.com.my/fisa_trading" target="_blank" rel="noopener noreferrer" class="fisa-link">
+            <img src="img/fisa-logo.svg" alt="FISA" class="fisa-logo">
+            <span>Visit our Shopee store</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- Load scripts in the correct order -->
+    <script src="assets/chunk-44885162.js"></script>
+    <script src="assets/error-handler.js"></script>
+    <script src="assets/store-init.js"></script>
+    <script src="assets/site-logo.js"></script>
+    <script src="assets/cookie-handler.js"></script>
+    <script src="assets/popup.js"></script>
+  </body>
+</html>
